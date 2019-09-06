@@ -1,4 +1,4 @@
-.//Practica 1
+//Practica 1
 //1. Desarrollar un algoritmo en scala que calcule el radio de un circulo
 
 var circunferencia = 15
@@ -25,7 +25,7 @@ println("4.- "+mensaje.slice(5,9))
 
 //5. Cual es la diferencia en value y una variable en scala?
 //R: Value es un valor inmutable o constante, ya no puede tener otro valor en tiempo de ejecucion
-//a diferencia de una variable que si puede tener distintos valores.
+println("a diferencia de una variable que si puede tener distintos valores.")
 
 //6. Dada la tupla ((2,4,5),(1,2,3),(3.1416,23))) regresa el numero 3.1416 
 
