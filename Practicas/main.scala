@@ -30,4 +30,4 @@ println("4.- "+mensaje.slice(5,9))
 //6. Dada la tupla ((2,4,5),(1,2,3),(3.1416,23))) regresa el numero 3.1416 
 
 var tupla =((2,4,5),(1,2,3),(3.1416,23))
-println(  tupla._2._0  );
+tupla._3._1

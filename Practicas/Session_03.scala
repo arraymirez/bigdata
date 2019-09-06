@@ -56,7 +56,10 @@ var lista = List("rojo", "blanco","negro")
 
 
 // 2. Añadir 5 elementos mas a "lista" "verde" ,"amarillo", "azul", "naranja", "perla"
-lista.add("lista","verde","amarillo","azul","naranja","perla")
+
+var clista = collection.mutable.Set(lista:_*)
+
+lista += ("lista","verde","amarillo","azul","naranja","perla")
 
 // 3. Traer los elementos de "lista" "verde", "amarillo", "azul"
 
