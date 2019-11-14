@@ -1,6 +1,8 @@
+
+
 import org.apache.spark.ml.classification.MultilayerPerceptronClassifier
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
-
+import org.apache.spark.ml.feature.VectorAssembler
 import org.apache.spark.sql.SparkSession
 
 
@@ -9,10 +11,19 @@ import org.apache.spark.sql.SparkSession
     ///Carga la informacion del archivo a DataFrame
     val data = spark.read.format("libsvm").load("Data/sample_multiclass_classification_data.txt")
 
+    //Para poder procesar los datos,necesitamos una columna llamada label
+    //que seran las clases para el procesamiento
+    data.withColumnRenamed("species","label") 
+
+
+
+
     // Separa la informacion en 60% entrenamiento y 40% para pruebas
     val splits = data.randomSplit(Array(0.6, 0.4), seed = 1234L)
     val train = splits(0)
     val test = splits(1)
+
+    train.head(5)
 
     // Especifica las capas para la red neuronal:
     //Capa de entrada de tamanio 4 (caracteristicas), dos intermedias de tamanio 5 y 4
