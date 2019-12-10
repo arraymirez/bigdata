@@ -27,12 +27,12 @@ val toInt = udf[Int,String](_.toInt)
 
 dataset.printSchema()
 
-val dataset_clean = dataset.withColumn("Fresh", toInt(dataset("Fresh")) ).withColumn("Milk", toInt(dataset("Milk")) ).withColumn("Grocery", toInt(dataset("Grocery")) ).withColumn("Detergents_Paper", toInt(dataset("Detergents_Paper")) ).withColumn("Delicassen", toInt(dataset("Delicassen")) )
+val dataset_clean = dataset.withColumn("Fresh", toInt(dataset("Fresh")) ).withColumn("Milk", toInt(dataset("Milk")) ).withColumn("Grocery", toInt(dataset("Grocery")) ).withColumn("Frozen", toInt(dataset("Frozen")) ).withColumn("Detergents_Paper", toInt(dataset("Detergents_Paper")) ).withColumn("Delicassen", toInt(dataset("Delicassen")) )
 
 dataset_clean.printSchema()
 
 //6.- Seleccionamos las columnas indicadas en un nuevo conjunto
-val feature_data=dataset_clean.select("Fresh","Milk","Grocery","Detergents_Paper","Delicassen")
+val feature_data=dataset_clean.select("Fresh","Milk","Grocery","Frozen","Detergents_Paper","Delicassen")
 
 feature_data.show()
 
@@ -62,6 +62,12 @@ val predictions = model.transform(data)
 val evaluator = new ClusteringEvaluator()
 
 val silhouette = evaluator.evaluate(predictions)
+
+val wss = model.computeCost(data);
+
+println(s"Within Set Sum of squared errors  $wss");
+
+
 
 //muestra los centros
 println("Centroides: ");

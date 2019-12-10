@@ -48,7 +48,7 @@ import org.apache.spark.sql.SparkSession
     //Indexa las categorias de acuerdo a las combinaciones de features
     val featureIndexer = new VectorIndexer().setInputCol("features").setOutputCol("indexedFeatures").fit(data)       
     // Separamos los datos, 70% para entranemiento y 30% para pruebas.
-    val Array(trainingData, testData) = data.randomSplit(Array(0.7, 0.3),1024L)
+    val Array(trainingData, testData) = data.randomSplit(Array(0.7, 0.3),2048L)
     // Se entrena el arbol de decision
     val dt = new DecisionTreeClassifier().setLabelCol("label").setFeaturesCol("features")
     //convierte las etiquetas indexadas de vuelta a las originales
