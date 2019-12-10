@@ -8,13 +8,13 @@ predefinido de clusters (K) por medio de el calculo de medias
 
 
 
-#Clustering
+# Clustering
 
 El clustering es una técnica para encontrar y clasificar K grupos de datos (clusters).
 Así, los elementos que comparten características semejantes estarán juntos en un mismo grupo,
 separados de los otros grupos con los que no comparten características. 
 
-#Funcionamiento del algoritmo
+# Funcionamiento del algoritmo
 K-means necesita como dato de entrada el número de grupos en los que vamos a segmentar la población.
 A partir de este número k de clusters, el algoritmo coloca primero k puntos aleatorios (centroides).
 Luego asigna a cualquiera de esos puntos todas las muestras con las distancias más pequeñas.
