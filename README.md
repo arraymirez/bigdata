@@ -25,3 +25,38 @@ Este proceso se repite de forma iterativa y los grupos se van ajustando hasta qu
 Este resultado final representa el ajuste que maximiza la distancia entre los distintos grupos y minimiza la distancia intragrupo.
 
 ![Ejemplo del funcionamiento de K-Means](https://upload.wikimedia.org/wikipedia/commons/e/ea/K-means_convergence.gif)
+
+
+
+# Implementacion en spark
+
+```scala
+//4.- Importamos la libreria de Kmeans par el algoritmo de agrupamiento
+import org.apache.spark.ml.clustering.KMeans
+
+//7.- Importamos vector asembler y vector
+import org.apache.spark.ml.feature.VectorAssembler
+import org.apache.spark.ml.linalg.Vectors
+
+feature_data.columns
+
+//8.- Objeto Vector assembler con las columnas de entrada
+val assembler = new VectorAssembler().setInputCols(feature_data.columns).setOutputCol("features")
+
+//9.- Transformamos las columnas del dataset con vector asembler
+val data = assembler.transform(dataset_clean)
+
+//10.- Cremamos un modelo k means con k =3
+val kmeans = new KMeans().setK(3).setSeed(123L)
+
+//entrenamos el modelo
+val model = kmeans.fit(data)
+
+
+// realizamos las predicciones
+val predictions = model.transform(data)
+
+//11.- Evaluamos el modelo con 
+val evaluator = new ClusteringEvaluator()
+
+```
